@@ -14,6 +14,24 @@
       overflow-x: hidden;
       position: relative;
     }
+
+    /* Летящая ведьма */
+    .witch {
+      position: fixed;
+      bottom: 50px;
+      left: -150px;
+      animation: flyWitch 15s linear infinite;
+      z-index: 10;
+      width: 60px;
+    }
+
+    @keyframes flyWitch {
+      0% { left: -150px; }
+      50% { left: 50%; transform: translateX(-50%); }
+      100% { left: 100vw; }
+    }
+
+    /* Парящие символы */
     .symbols {
       position: fixed;
       top: 0;
@@ -24,12 +42,14 @@
       overflow: hidden;
       z-index: 0;
     }
+
     .symbol {
       position: absolute;
       font-size: 2em;
       color: rgba(255, 255, 255, 0.08);
       animation: float 20s linear infinite;
     }
+
     @keyframes float {
       from {
         transform: translateY(100vh) rotate(0deg);
@@ -40,6 +60,8 @@
         opacity: 1;
       }
     }
+
+    /* Свечи */
     .candle {
       position: fixed;
       bottom: 10px;
@@ -49,6 +71,7 @@
       border-radius: 4px;
       z-index: 2;
     }
+
     .candle::before {
       content: '';
       position: absolute;
@@ -61,32 +84,83 @@
       animation: flame 1s infinite ease-in-out;
       opacity: 0.8;
     }
+
     .candle.left {
       left: 30px;
     }
+
     .candle.right {
       right: 30px;
     }
+
     @keyframes flame {
       0%, 100% { transform: scale(1) translateY(0); opacity: 0.8; }
       50% { transform: scale(1.2) translateY(-4px); opacity: 1; }
     }
+
+    /* Летающие руны */
+    .rune {
+      position: fixed;
+      font-size: 3em;
+      color: rgba(255, 255, 255, 0.1);
+      animation: runeFloat 25s infinite;
+    }
+
+    @keyframes runeFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 1; }
+    }
+
+    /* Совушка */
+    .owl {
+      position: fixed;
+      top: 15%;
+      left: 20%;
+      animation: flyOwl 10s linear infinite;
+      z-index: 10;
+      width: 50px;
+    }
+
+    @keyframes flyOwl {
+      0% { top: 15%; left: 20%; }
+      50% { top: 20%; left: 80%; }
+      100% { top: 10%; left: 10%; }
+    }
+
+    /* Травы */
+    .herb {
+      position: fixed;
+      bottom: 0;
+      width: 30px;
+      height: 30px;
+      animation: growHerb 10s ease-in-out infinite;
+    }
+
+    @keyframes growHerb {
+      0%, 100% { transform: scale(0.5); opacity: 0.8; }
+      50% { transform: scale(1.5); opacity: 1; }
+    }
+
+    /* Общие стили */
     header, .content, .footer {
       position: relative;
       z-index: 1;
     }
+
     header {
       text-align: center;
       padding: 50px 20px;
       background: #1a1a1a;
       border-bottom: 2px solid #444;
     }
+
     header h1 {
       font-size: 3em;
       margin: 0;
       color: #f0f0f0;
       animation: flicker 3s infinite;
     }
+
     @keyframes flicker {
       0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
@@ -95,10 +169,12 @@
         opacity: 0.6;
       }
     }
+
     header p {
       font-size: 1.2em;
       color: #bbb;
     }
+
     .content {
       padding: 50px 20px;
       max-width: 800px;
@@ -107,26 +183,32 @@
       animation: fadeIn 2s ease-in forwards;
       animation-delay: 1s;
     }
+
     @keyframes fadeIn {
       to { opacity: 1; }
     }
+
     .content h2 {
       font-size: 2em;
       color: #fff;
       margin-bottom: 20px;
     }
+
     .content p {
       line-height: 1.6;
     }
+
     ul {
       text-align: left;
       display: inline-block;
       margin-top: 10px;
       margin-bottom: 20px;
     }
+
     .social-links {
       margin-top: 20px;
     }
+
     .social-links a {
       display: inline-block;
       color: #ff9933;
@@ -135,9 +217,11 @@
       margin: 10px 15px;
       transition: text-shadow 0.3s ease;
     }
+
     .social-links a:hover {
       text-shadow: 0 0 10px #ff9933, 0 0 20px #ff6600;
     }
+
     .footer {
       text-align: center;
       background: #1a1a1a;
@@ -148,27 +232,51 @@
   </style>
 </head>
 <body>
-<div class="symbols">
-  <div class="symbol" style="left: 10%; animation-delay: 0s;">☽</div>
-  <div class="symbol" style="left: 30%; animation-delay: 5s;">✦</div>
-  <div class="symbol" style="left: 50%; animation-delay: 10s;">☉</div>
-  <div class="symbol" style="left: 70%; animation-delay: 2s;">☿</div>
-  <div class="symbol" style="left: 90%; animation-delay: 7s;">♆</div>
+
+<!-- Летящая ведьма -->
+<div class="witch">
+  <img src="witch-broom.png" alt="Ведьма на метле" />
 </div>
+
+<!-- Совушка -->
+<div class="owl">
+  <img src="owl.png" alt="Сова" />
+</div>
+
+<!-- Парящие руны -->
+<div class="symbols">
+  <div class="symbol rune" style="left: 5%; animation-delay: 0s;">ᚱ</div>
+  <div class="symbol rune" style="left: 25%; animation-delay: 3s;">ᚴ</div>
+  <div class="symbol rune" style="left: 45%; animation-delay: 6s;">ᛁ</div>
+  <div class="symbol rune" style="left: 65%; animation-delay: 9s;">ᚦ</div>
+  <div class="symbol rune" style="left: 85%; animation-delay: 12s;">ᛇ</div>
+</div>
+
+<!-- Травы -->
+<div class="herb" style="left: 10%; animation-delay: 0s;">🌿</div>
+<div class="herb" style="left: 30%; animation-delay: 2s;">🌱</div>
+<div class="herb" style="left: 50%; animation-delay: 4s;">🍃</div>
+<div class="herb" style="left: 70%; animation-delay: 6s;">🌾</div>
+
+<!-- Свечи -->
 <div class="candle left"></div>
 <div class="candle right"></div>
+
 <header>
   <h1>Иулита Ворон</h1>
   <p>Маг, знахарь, ведунья. Магия, таро, родовая книга судьбы.</p>
 </header>
+
 <div class="content">
   <h2>Обо мне</h2>
   <p>Я — Иулита Ворон, практикующий маг, ведунья, знахарь. Работаю как с белой, так и с чёрной магией. Использую силу родовой книги судьбы для помощи людям.</p>
   <p>Самый ценный ресурс в жизни — это время. Не теряйте его напрасно. Пока человек жив — всё можно изменить. Главное — поставить цель и начать действовать.</p>
   <p>Звоните. Я помогу вам решить вашу проблему.</p>
+
   <h2>Запись на приём</h2>
   <p>Телефон: <strong>+38 (050) 817-07-69</strong></p>
   <p>Email: <strong>your_curonmadina@gmail.com</strong></p>
+
   <h2>Помощь и работа с:</h2>
   <ul>
     <li>Венец безбрачия</li>
@@ -182,6 +290,7 @@
     <li>Привороты и привязки</li>
     <li>Любое колдовство, зависимости, манипуляции, воздействия</li>
   </ul>
+
   <h2>Социальные сети</h2>
   <div class="social-links">
     <a href="https://www.instagram.com/iylita_voron?igsh=NmRmMDAzM3RrdzV5" target="_blank">Instagram</a>
@@ -189,8 +298,10 @@
     <a href="https://www.facebook.com/share/1BzbF9vUoj/" target="_blank">Facebook</a>
   </div>
 </div>
+
 <footer class="footer">
   <p>© 2025 Иулита Ворон. Все права защищены.</p>
 </footer>
+
 </body>
 </html>
